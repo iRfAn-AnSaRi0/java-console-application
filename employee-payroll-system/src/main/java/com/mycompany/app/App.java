@@ -3,12 +3,14 @@ package com.mycompany.app;
 import com.mycompany.app.dao.*;
 import com.mycompany.app.model.Employee;
 import com.mycompany.app.model.EmployeeType;
+import com.mycompany.app.model.Payroll;
 
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
         EmployeeDAO employeeDAO = new EmployeeDAO();
+        PayrollDAO payrollDAO = new PayrollDAO();
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
 
@@ -84,7 +86,35 @@ public class App {
 
                     break;
                 case 2:
-                    System.out.println("Working progress");
+
+                 boolean innerflag2 = true;
+                    while (innerflag2) {
+                        System.out.println("\n--- Employee Payroll ---");
+                        System.out.println("1. Add Payroll");
+                        System.out.println("2. View All Payroll");
+                        System.out.println("3. Update Payroll Details");
+                        System.out.println("4. Delete Payroll");
+                        System.out.println("5. View Payroll by ID");
+                        System.out.println("6. Back to Main Menu");
+                        System.out.print("Enter your choice: ");
+                        int empOption = sc.nextInt();
+                        sc.nextLine();
+
+                        switch (empOption) {
+                         
+                        
+                        
+                        }
+                    }
+
+                    //  System.out.println("Enter Employee Type (FULLTIME / PARTTIME): ");
+                    //         String type = sc.next().toUpperCase();
+                    //         if(type.equals("FULLTIME")){
+                                
+                    //         }
+
+                
+                    
                     break;
                 case 3:
                     flag = false;

@@ -4,10 +4,6 @@ import java.sql.*;
 import com.mycompany.app.db.DBConnection;
 import com.mycompany.app.model.Employee;
 import com.mycompany.app.model.EmployeeType;
-import com.mycompany.app.model.FullTimeEmployee;
-import com.mycompany.app.model.PartTimeEmployee;
-import com.mycompany.app.model.Payroll;
-import com.mycompany.app.service.PayrollService;
 
 public class EmployeeDAO {
 
@@ -101,11 +97,5 @@ public class EmployeeDAO {
             e.printStackTrace();
         }
 
-    }
-
-    /* Employee Payroll APIs */
-
-    public void add_salary(){
-        
     }
 }
