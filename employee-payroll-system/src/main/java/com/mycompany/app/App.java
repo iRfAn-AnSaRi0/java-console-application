@@ -4,7 +4,9 @@ import com.mycompany.app.dao.*;
 import com.mycompany.app.model.Employee;
 import com.mycompany.app.model.EmployeeType;
 import com.mycompany.app.model.Payroll;
+import java.math.BigDecimal;
 
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class App {
@@ -92,18 +94,31 @@ public class App {
                         System.out.println("\n--- Employee Payroll ---");
                         System.out.println("1. Add Payroll");
                         System.out.println("2. View All Payroll");
-                        System.out.println("3. Update Payroll Details");
-                        System.out.println("4. Delete Payroll");
-                        System.out.println("5. View Payroll by ID");
-                        System.out.println("6. Back to Main Menu");
-                        System.out.print("Enter your choice: ");
                         int empOption = sc.nextInt();
                         sc.nextLine();
 
                         switch (empOption) {
-                         
                         
-                        
+                            case 1:
+                                System.out.print("Select ( FullTime / PartTime ) : ");
+                                 String emptype = sc.nextLine().toUpperCase();
+                               
+                                if(emptype.equals("FULLTIME")){
+                                    System.out.print("Enter Base Salary : ");
+                                    BigDecimal salary = sc.nextBigDecimal();
+
+                                      System.out.print("Enter Hours Worked : ");
+                                    int hours = sc.nextInt();
+                                      System.out.print("Enter Bonus : ");
+                                    BigDecimal bonus = sc.nextBigDecimal();
+                                    System.out.print("Enter Tax Rate : ");
+                                    BigDecimal taxrate = sc.nextBigDecimal();
+
+                                    Payroll payroll_add = new Payroll(salary, hours, bonus, taxrate);
+                                    payrollDAO.addPayroll(payroll_add);
+                                }else{
+                                    System.out.println("Working in progress");
+                                }
                         }
                     }
 
