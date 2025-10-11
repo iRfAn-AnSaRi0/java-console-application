@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public class MembersDAO {
 
     public void add_member(Members members) {
-        String sql = "INSERT INTO member (member_name, member_email, member_phone) VALUES(?,?,?)";
+        String sql = "INSERT INTO members (member_name, member_email, member_phone) VALUES(?,?,?)";
 
         try (Connection con = DbConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, members.get_member_name());
@@ -26,7 +26,7 @@ public class MembersDAO {
     }
 
     public void delete_member(int id) {
-        String sql = "DELETE FROM member WHERE member_id=?";
+        String sql = "DELETE FROM members WHERE member_id=?";
 
         try (Connection con = DbConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -39,7 +39,7 @@ public class MembersDAO {
     }
 
     public void view_member() {
-        String sql = "SELECT * FROM member";
+        String sql = "SELECT * FROM members";
         try (Connection con = DbConnection.getConnection();
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
@@ -61,7 +61,7 @@ public class MembersDAO {
     }
 
     public void update_member(Members members) {
-        String sql = "UPDATE member SET member_name=?, member_email=?, member_phone=? WHERE member_id=?";
+        String sql = "UPDATE members SET member_name=?, member_email=?, member_phone=? WHERE member_id=?";
         try (Connection con = DbConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, members.get_member_name());
             ps.setString(2, members.get_member_email());

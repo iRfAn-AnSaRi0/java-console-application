@@ -4,17 +4,17 @@ public class Books {
     private int book_id;
     private String book_name;
     private String book_author;
-    private Integer copies_available;
+    private int copies_available;
 
     // constructor for set the value
-    public Books(String book_name, String book_author, Integer copies_available) {
+    public Books(String book_name, String book_author, int copies_available) {
         this.book_name = book_name;
         this.book_author = book_author;
         this.copies_available = copies_available;
     }
 
     // constructor for get the value
-    public Books(int book_id, String book_name, String book_author, Integer copies_available) {
+    public Books(int book_id, String book_name, String book_author, int copies_available) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.book_author = book_author;
@@ -22,7 +22,7 @@ public class Books {
     }
 
     // setter method
-    public void setBook(String book_name, String book_author, Integer copies_available) {
+    public void setBook(String book_name, String book_author, int copies_available) {
         this.book_name = book_name;
         this.book_author = book_author;
         this.copies_available = copies_available;
@@ -42,7 +42,7 @@ public class Books {
         return book_author;
     }
 
-    public Integer get_copies_available() {
+    public int get_copies_available() {
         return copies_available;
     }
 

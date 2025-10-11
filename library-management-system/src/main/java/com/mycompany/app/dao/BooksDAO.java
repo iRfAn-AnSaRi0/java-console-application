@@ -12,7 +12,7 @@ import com.mycompany.app.db.DbConnection;
 public class BooksDAO {
 
     public void add_book(Books books) {
-        String sql = "INSERT INTO book (book_name , book_author , copies_available) VALUES(?,?,?)";
+        String sql = "INSERT INTO books (book_name , book_author , copies_available) VALUES(?,?,?)";
         try (Connection con = DbConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, books.get_book_name());
             ps.setString(2, books.get_book_author());
@@ -26,7 +26,7 @@ public class BooksDAO {
     }
 
     public void delete_book(int id) {
-        String sql = "DELETE FROM book WHERE book_id=?";
+        String sql = "DELETE FROM books WHERE book_id=?";
 
         try (Connection con = DbConnection.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -39,7 +39,7 @@ public class BooksDAO {
     }
 
     public void view_book() {
-        String sql = "SELECT * FROM book";
+        String sql = "SELECT * FROM books";
 
         try (Connection con = DbConnection.getConnection();
                 Statement stmt = con.createStatement();
