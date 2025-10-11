@@ -1,12 +1,10 @@
 package com.mycompany.app.dao;
 
 import com.mycompany.app.model.Books;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 import com.mycompany.app.db.DbConnection;
 
 public class BooksDAO {

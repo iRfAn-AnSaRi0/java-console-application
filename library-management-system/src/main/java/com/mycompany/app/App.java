@@ -1,17 +1,15 @@
 package com.mycompany.app;
 
-import java.lang.reflect.Member;
+
 import java.sql.Connection;
-
-// import java.sql.Connection;
-
 import com.mycompany.app.db.DbConnection;
-
 import java.util.Scanner;
 import com.mycompany.app.model.Books;
 import com.mycompany.app.dao.BooksDAO;
 import com.mycompany.app.model.Members;
 import com.mycompany.app.dao.MembersDAO;
+import com.mycompany.app.model.IssuedBooks;
+import com.mycompany.app.dao.IssuedBooksDAO;
 
 public class App {
     public static void main(String[] args) {
@@ -24,6 +22,7 @@ public class App {
         }
         BooksDAO booksDAO = new BooksDAO();
         MembersDAO membersDAO = new MembersDAO();
+        IssuedBooksDAO issuedBooksDAO = new IssuedBooksDAO();
         Scanner sc = new Scanner(System.in);
         boolean flag1 = true;
         boolean flag2 = true;
@@ -34,7 +33,8 @@ public class App {
             System.out.println("2. Books ");
             System.out.println("3. Issued Books ");
             System.out.println("4. Return Books ");
-            System.out.println("5. Exit ");
+            System.out.println("5. View Issued Books ");
+            System.out.println("6. Exit ");
 
             int option1 = sc.nextInt();
             sc.nextLine();
@@ -64,33 +64,34 @@ public class App {
                                 Members members = new Members(member_name, member_email, member_phone, null);
                                 membersDAO.add_member(members);
                                 break;
-                        case 2:
-                        System.out.println("All members");
-                        membersDAO.view_member();
-                        break;
-                        case 3:
-                        System.out.print("Enter Member ID : ");
-                        int update_member_id = sc.nextInt();
-                        System.out.print("Enter New Name : ");
-                        sc.nextLine();
-                        String member_new_name = sc.nextLine();
-                        System.out.print("Enter New Email : ");
-                        String member_new_email = sc.nextLine();
-                        System.out.print("Enter New Phone : ");
-                        String member_new_phone = sc.nextLine();
-                        Members update_members_details = new Members(update_member_id, member_new_name, member_new_email, member_new_phone, null);
-                        membersDAO.update_member(update_members_details);
-                        break;
-                        case 4:
-                          System.out.print("Enter Member ID : ");
-                          int delete_member_id = sc.nextInt();
-                          membersDAO.delete_member(delete_member_id);
-                        break;
-                        case 5:
-                        flag3 = false;
-                        break;
+                            case 2:
+                                System.out.println("All members");
+                                membersDAO.view_member();
+                                break;
+                            case 3:
+                                System.out.print("Enter Member ID : ");
+                                int update_member_id = sc.nextInt();
+                                System.out.print("Enter New Name : ");
+                                sc.nextLine();
+                                String member_new_name = sc.nextLine();
+                                System.out.print("Enter New Email : ");
+                                String member_new_email = sc.nextLine();
+                                System.out.print("Enter New Phone : ");
+                                String member_new_phone = sc.nextLine();
+                                Members update_members_details = new Members(update_member_id, member_new_name,
+                                        member_new_email, member_new_phone, null);
+                                membersDAO.update_member(update_members_details);
+                                break;
+                            case 4:
+                                System.out.print("Enter Member ID : ");
+                                int delete_member_id = sc.nextInt();
+                                membersDAO.delete_member(delete_member_id);
+                                break;
+                            case 5:
+                                flag3 = false;
+                                break;
                             default:
-                            System.out.println("Invalid option");
+                                System.out.println("Invalid option");
                                 break;
                         }
                     }
@@ -135,11 +136,27 @@ public class App {
                                 break;
                         }
                     }
+                    break;
                 case 3:
+                    System.out.print("Enter Member ID : ");
+                    int issued_member_id = sc.nextInt();
+                    System.out.print("Enter Book ID : ");
+                    int issued_book_id = sc.nextInt();
+                    IssuedBooks issuedBooks = new IssuedBooks(issued_member_id, issued_book_id, null);
+                    issuedBooksDAO.issued_book(issuedBooks);
                     break;
                 case 4:
+                    System.out.print("Enter Book ID : ");
+                    int retrun_book_id = sc.nextInt();
+                    System.out.print("Enter Member ID : ");
+                    int return_member_id = sc.nextInt();
+                    IssuedBooks returnBooks = new IssuedBooks(return_member_id, retrun_book_id, null);
+                    issuedBooksDAO.retrun_book(returnBooks);
                     break;
                 case 5:
+                    issuedBooksDAO.get_all_issued_books_details();
+                    break;
+                case 6:
                     flag1 = false;
                     break;
                 default:

@@ -2,7 +2,6 @@ package com.mycompany.app.dao;
 
 import com.mycompany.app.model.Members;
 import com.mycompany.app.db.DbConnection;
-
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
