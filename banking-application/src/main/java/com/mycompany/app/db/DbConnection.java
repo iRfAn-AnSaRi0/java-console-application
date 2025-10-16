@@ -1,0 +1,21 @@
+package com.mycompany.app.db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DbConnection {
+    public static Connection getConnection(){
+      String DB_URI = "jdbc:postgresql://localhost:5432/banking_sys";
+      String DB_USER = "postgres";
+      String DB_PASSWORD = "postgres";
+      
+      try{
+         return DriverManager.getConnection(DB_URI, DB_USER, DB_PASSWORD);
+      } catch (Exception e) {
+        System.out.println("connection failed");
+        e.printStackTrace();
+        return null;
+      }
+    }
+    
+}
